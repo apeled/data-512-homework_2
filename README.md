@@ -15,9 +15,10 @@ This project explores bias in Wikipedia articles using data on political figures
 │   ├── politicians_with_ores_predictions.csv            # Data with ORES quality predictions for each article
 │   ├── population_by_country_AUG.2024.csv               # Source data of population statistics by country
 │   └── wp_politicians_by_country.csv                    # Final combined data with articles, quality scores, and population
-├── ores_errors_log.txt         # Log file with articles for which ORES scores couldn't be retrieved
+├── intermediate_files          # Folder containing the intermediate error/unmatched countries logs
+│   ├── ores_errors_log.txt         # Log file with articles for which ORES scores couldn't be retrieved
+│   ├── wp_countries-no_match.txt   # List of countries not matched between the Wikipedia and population datasets
 ├── wp_article_analysis.ipynb   # Jupyter notebook performing the analysis
-├── wp_countries-no_match.txt   # List of countries not matched between the Wikipedia and population datasets
 ```
 
 ## Data Sources
@@ -48,7 +49,7 @@ Data sources 1 and 2 were given to me by the teaching staff of DATA 512
    - **`revision_id`**: The Wikipedia revision ID for the article.
    - **`article_quality`**: The ORES-predicted quality class for the article.
 
-## Intermediary Files
+## Intermediary Files (`~/intermediate_files`)
 
 1. **`ores_errors_log.txt`**: Contains a list of articles for which ORES scores could not be retrieved. This file logs the names of articles that resulted in errors during the ORES API request.
    
@@ -118,20 +119,13 @@ _Reflecting on the things that I have learned through this project, I would say 
 1. **Missing ORES Scores:**
    - In some cases, the ORES quality prediction for certain articles may not be retrieved. These cases are logged in the `ores_errors_log.txt` file, and an error rate for missing scores is calculated in the analysis. The error rate in this project was approximately 0.11%.
    
-2. **Population Data Adjustments:**
-   - Some countries in the population dataset, such as Monaco and Tuvalu, were found to have incorrect population values. These were manually adjusted based on data from Wikipedia.
-   
-3. **Manual Region Assignments:**
-   - Countries were assigned to regions based on population data. If a country did not match exactly between the datasets, it was excluded from the final analysis. The excluded countries are logged in the `wp_countries-no_match.txt` file.
-   
-4. **API Limitations:**
-   - The Wikimedia ORES and PageInfo APIs have request rate limits. Although the requests were throttled to avoid exceeding the limit, heavy usage of the API in a short time could lead to temporary restrictions.
-   
-5. **Population in Millions:**
-   - The population data provided is in millions. For smaller populations, such as Tuvalu, precision may be lost when dealing with small article counts relative to population size.
-   
-6. **Outdated Population Data:**
-   - The population data used in this project may not reflect the most current statistics, and updates to the population figures may be required in future analyses.
+2. **Population Issues:**
+   - **Population Data Adjustments:**
+      - Some countries in the population dataset, such as Monaco and Tuvalu, were found to have incorrect population values. These were manually adjusted based on data from Wikipedia.
+   - **Population in Millions:**
+      - The population data provided is in millions. For smaller populations, such as Tuvalu, precision may be lost when dealing with small article counts relative to population size.
+   - **Outdated Population Data:**
+      - The population data used in this project may not reflect the most current statistics, and updates to the population figures may be required in future analyses.
 
 
 ## License and Data Attribution
