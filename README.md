@@ -96,6 +96,23 @@ The notebook `wp_article_analysis.ipynb` contains all the code for processing th
    * ORES API Documentation: [ORES API documentation](https://ores.wikimedia.org)
    * LiftWing Documentation: [LiftWing ORES API Documentation](https://wikitech.wikimedia.org/wiki/Machine_Learning/LiftWing/Usage)
 
+## Research Implications
+
+_Through this project, I gained a deeper understanding of how biases can have big affects in large datasets like Wikipedia articles and how these biases can impact the overall analysis. One key takeaway was the uneven distribution of articles and their quality across different countries and regions, which was very suprising. I was primarly surprised to see significant differences in article coverage per capita, with smaller countries or less globally influential regions often having disproportionately fewer articles. On the complete other hand, some small countries, due to particular editorial interest, had a very high article count per capita. This finding reflects potential systemic bias in how content is created and maintained on Wikipedia, where editorial activity tends to focus more on certain countries and topics, potentially influenced by the demographics and interests of Wikipedia contributors._
+
+* What biases did you expect to find in the data (before you started working with it), and why?
+
+   _Before starting this analysis, I expected to find that more developed nations or nations with more significant global influence would have higher article coverage. I also anticipated that wealthier nations would have higher-quality articles due to the availability of resources and higher engagement from users in those regions. These assumptions were largely confirmed, but I did not expect some smaller nations to have such high article counts per capita, indicating editorial preferences rather than strictly population-driven factors._
+
+* What (potential) sources of bias did you discover in the course of your data processing and analysis?
+
+   _During the course of this analysis, one major source of bias I identified was related to the limitations of the ORES system and the reliance on article revision IDs. For some articles, quality scores could not be retrieved, which may have impacted the results with every run through the entire code. Additionally, the population data being in millions created some granularity issues when working with smaller countries. The manual adjustments to populations in cases like Monaco and Tuvalu (where I had to go and look up their populations on WikiPedia and manually enter them is) were another source of potential bias, though necessary to ensure accuracy. Furthermore, the discrepancies in how countries are grouped into regions, especially when country names didn't match perfectly, also introduced a layer of bias._
+
+* How might a researcher supplement or transform this dataset to potentially correct for the limitations/biases you observed?
+
+   _To address these limitations, researchers could supplement the dataset by seeking alternative sources of population data to ensure accuracy, particularly for smaller countries. Additionally, diversifying the contributors to Wikipedia, promoting participation from underrepresented regions, or using tools like bots to improve content coverage in less populated or developing countries could help mitigate some of the biases. An expansion of the dataset to include more nuanced regional data or exploring external databases for a more complete set of articles would also help reduce biases in coverage and article quality._
+
+
 ## Known Issues or Limitations
 
 1. **Missing ORES Scores:**
